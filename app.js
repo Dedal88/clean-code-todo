@@ -67,7 +67,6 @@ const bindTaskEvents = function (taskListItem, checkBoxEventHandler) {
     ul.removeChild(listItem);
   };
 
-  addButton.onclick = addTask;
   addButton.addEventListener('click', addTask);
 
   editButton.onclick = editTask;
