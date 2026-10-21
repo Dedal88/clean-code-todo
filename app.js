@@ -58,9 +58,17 @@ const addTask = function () {
   if (!taskInput.value) return;
   const listItem = createNewTaskElement(taskInput.value);
   incompleteTaskHolder.appendChild(listItem);
-  bindTaskEvents(listItem, taskCompleted);
+  bindTaskEvents(listItem, changeTaskStatus);
   taskInput.value = '';
 };
+
+function changeTaskStatus() {
+  const listItem = this.parentNode;
+
+  const targetList = this.checked ? completedTasksHolder : incompleteTaskHolder;
+
+  targetList.appendChild(listItem);
+}
 
 function bindTaskEvents(taskListItem, checkBoxEventHandler) {
   const checkBox = taskListItem.querySelector('input[type=checkbox]');
@@ -73,22 +81,10 @@ function bindTaskEvents(taskListItem, checkBoxEventHandler) {
   checkBox.addEventListener('change', checkBoxEventHandler);
 }
 
-function taskCompleted() {
-  const listItem = this.parentNode;
-  completedTasksHolder.appendChild(listItem);
-  bindTaskEvents(listItem, taskIncomplete);
-}
-
-function taskIncomplete() {
-  const listItem = this.parentNode;
-  incompleteTaskHolder.appendChild(listItem);
-  bindTaskEvents(listItem, taskCompleted);
-}
-
 for (let i = 0; i < incompleteTaskHolder.children.length; i++) {
-  bindTaskEvents(incompleteTaskHolder.children[i], taskCompleted);
+  bindTaskEvents(incompleteTaskHolder.children[i], changeTaskStatus);
 }
 
 for (let i = 0; i < completedTasksHolder.children.length; i++) {
-  bindTaskEvents(completedTasksHolder.children[i], taskIncomplete);
+  bindTaskEvents(completedTasksHolder.children[i], changeTaskStatus);
 }
