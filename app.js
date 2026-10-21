@@ -1,12 +1,3 @@
-//Document is the DOM can be accessed in the console with document.window.
-// Tree is from the top, html, body, p etc.
-
-//Problem: User interaction does not provide the correct results.
-//Solution: Add interactivity so the user can manage daily tasks.
-//Break things down into smaller steps and take each step at a time.
-
-// Event handling, user interaction is what starts the code execution.
-
 var taskInput = document.getElementById('new-task'); //Add a new task.
 var addButton = document.getElementsByTagName('button')[0]; //first button
 var incompleteTaskHolder = document.getElementById('incompleteTasks'); //ul of #incompleteTasks
@@ -54,7 +45,6 @@ var createNewTaskElement = function (taskString) {
 };
 
 var addTask = function () {
-  console.log('Add Task...');
   //Create a new list item with the text from the #new-task:
   if (!taskInput.value) return;
   const listItem = createNewTaskElement(taskInput.value);
@@ -69,11 +59,7 @@ var addTask = function () {
 //Edit an existing task.
 
 var editTask = function () {
-  console.log('Edit Task...');
-  console.log("Change 'edit' to 'save'");
-
   const listItem = this.parentNode;
-
   const editInput = listItem.querySelector('input[type=text]');
   const label = listItem.querySelector('label');
   const editBtn = listItem.querySelector('.edit');
@@ -95,8 +81,6 @@ var editTask = function () {
 
 //Delete task.
 var deleteTask = function () {
-  console.log('Delete Task...');
-
   const listItem = this.parentNode;
   const ul = listItem.parentNode;
   //Remove the parent list item from the ul.
@@ -105,8 +89,6 @@ var deleteTask = function () {
 
 //Mark task completed
 var taskCompleted = function () {
-  console.log('Complete Task...');
-
   //Append the task list item to the #completed-tasks
   const listItem = this.parentNode;
   completedTasksHolder.appendChild(listItem);
@@ -114,7 +96,6 @@ var taskCompleted = function () {
 };
 
 var taskIncomplete = function () {
-  console.log('Incomplete Task...');
   //Mark task as incomplete.
   //When the checkbox is unchecked
   //Append the task list item to the #incompleteTasks.
@@ -123,9 +104,7 @@ var taskIncomplete = function () {
   bindTaskEvents(listItem, taskCompleted);
 };
 
-var ajaxRequest = function () {
-  console.log('AJAX Request');
-};
+var ajaxRequest = function () {};
 
 //The glue to hold it all together.
 
@@ -135,7 +114,6 @@ addButton.addEventListener('click', addTask);
 addButton.addEventListener('click', ajaxRequest);
 
 var bindTaskEvents = function (taskListItem, checkBoxEventHandler) {
-  console.log('bind list item events');
   //select ListItems children
   const checkBox = taskListItem.querySelector('input[type=checkbox]');
   const editButton = taskListItem.querySelector('button.edit');
