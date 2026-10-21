@@ -3,21 +3,21 @@ body {
   color: #333;
   font-family: Lato, sans-serif;
 }
-.aaa {
+.moreDetails {
   width: 500px;
   margin: 0 auto;
   display: block;
   text-align: right;
 }
-.aaa img {
+.moreDetails img {
   width: 100%;
 }
-.aaa .more_inf {
+.moreDetails .more_inf {
   font-family: fantasy, cursive;
 }
 
 @media (max-width: 768px) {
-  .aaa {
+  .moreDetails {
     text-align: center;
   }
 }
